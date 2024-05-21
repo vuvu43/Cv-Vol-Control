@@ -3,7 +3,6 @@
 cd Volume-Controler
 python main.py
 ```
-\br
 
 # Como funciona
 
