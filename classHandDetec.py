@@ -34,7 +34,7 @@ class hand_detector():
 
         if self.result.multi_hand_landmarks:
             for handLms in self.result.multi_hand_landmarks:
-                if draw: #desenha as landmarks se draw=True
+                if draw:
                     self.mpDraw.draw_landmarks(img, handLms, self.mpHands.HAND_CONNECTIONS)
         
         return img
@@ -57,12 +57,12 @@ class hand_detector():
             my_hand = self.result.multi_hand_landmarks[hand_no]
 
             for (tag, lm) in enumerate(my_hand.landmark):
-                h, w, c = img.shape
+                h, w, _ = img.shape
                 cx, cy = int(lm.x*w), int(lm.y*h) #calcula em que posição da imagem está a landmark
                 lmList.append((tag, cx, cy))
 
                 if tag in draw_lms:
                     #desenha um circulo nas landmarks indicadas
-                    cv.circle(img, (cx,cy), 10, (255,0,255), cv.FILLED)
+                    cv.circle(img, (cx,cy), 7, (255,10,10), cv.FILLED)
         
         return lmList
